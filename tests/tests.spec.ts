@@ -1,11 +1,13 @@
 import { test1, expect } from "./fixture";
 
-test1("Check login form title", async ({ homePage, page }) => {
-  await expect(
-    page.locator("body > div.main-content > p:nth-child(1)")
-  ).toHaveText("Log In:");
-});
-
-test1("Check email label", async ({ homePage, page }) => {
-  await expect(page.locator("#email")).toHaveAttribute("placeholder", "Email");
-});
+test1(
+  "Verify contacts page title and description",
+  async ({ homePage, contactPage, page }) => {
+    await expect(contactPage.pageTitle).toHaveText("Contact List");
+    await expect(contactPage.pageDescription).toHaveText(
+      "Click on any contact to view the Contact Details"
+    );
+    console.log("Checked contact page title and description");
+  }
+);
+//TODO: Add contacts and test
