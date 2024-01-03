@@ -1,3 +1,4 @@
+import exp from "constants";
 import { test1, expect } from "./fixture";
 
 test1(
@@ -11,7 +12,7 @@ test1(
   }
 );
 
-test1(
+test1.only(
   "Add contact and check successfully added",
   async ({ homePage, contactPage, page }) => {
     //Add a contact
@@ -31,15 +32,26 @@ test1(
     await contactPage.submitBtn.click();
 
     //Check contact is added on the table view
-    //This approach picks the 1st table row and therefore would fail if it did not find the required text
-    //We have a soft assertion here to keep the test going
-    await expect
-      .soft(page.locator(".contactTableBodyRow > td").nth(1))
-      .toHaveText("Test Contact", { timeout: 3000 });
     //This approach picks which ever table row that contains the required text
+
     await expect(
       page.locator(".contactTableBodyRow > td").getByText("Test Contact")
     ).toHaveCount(1);
+
+    //Delete the contact and check it is deleted
+    await page
+      .locator(".contactTableBodyRow > td")
+      .getByText("Test Contact")
+      .click();
+
+    //For some reason, the playwright test was too quick on the details page and not deleting the contact properly
+    //To overcome this I added an additional assertion on the details page
+    await expect(contactPage.firstNameInput).toHaveText("Test");
+    page.on("dialog", (dialog) => dialog.accept());
+    await contactPage.deleteBtn.click();
+
+    await expect(
+      page.locator(".contactTableBodyRow > td").getByText("Test Contact")
+    ).not.toBeAttached();
   }
 );
-//TODO: Add deletion case

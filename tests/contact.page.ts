@@ -25,6 +25,9 @@ export default class ContactPage {
   readonly countryInput: Locator;
   readonly submitBtn: Locator;
 
+  //Contact details
+  readonly deleteBtn: Locator;
+
   constructor(page: Page) {
     this.page = page;
 
@@ -46,5 +49,8 @@ export default class ContactPage {
     this.postalCodeInput = page.locator("#postalCode");
     this.countryInput = page.locator("#country");
     this.submitBtn = page.locator("#submit");
+
+    //Contact details
+    this.deleteBtn = page.locator("#delete");
   }
 }
