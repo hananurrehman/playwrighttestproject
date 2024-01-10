@@ -1,6 +1,6 @@
 # Playwright Practice Project
 
-This project demonstrates all the research and learning I have been up to with my playwright journey:
+This project demonstrates some basic learning I have acquired in Playwright:
 
 ## Contact List Demo App tests
 
