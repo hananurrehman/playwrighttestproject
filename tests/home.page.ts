@@ -1,6 +1,8 @@
 //The homepage file contains the locators and goto method call for our test page. Its basically our page object model class
 
 import type { Page, Locator } from "@playwright/test";
+const email = process.env.EMAIL ?? "";
+const password = process.env.PASSWORD ?? "";
 
 export default class HomePage {
   page: Page;
@@ -22,8 +24,8 @@ export default class HomePage {
   }
 
   async login() {
-    await this.emailInput.fill("test@hanan.com");
-    await this.passwordInput.fill("123456789");
+    await this.emailInput.fill(email);
+    await this.passwordInput.fill(password);
     await this.loginSubmitButton.click();
   }
 }

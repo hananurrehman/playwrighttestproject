@@ -1,9 +1,8 @@
-import exp from "constants";
 import { test1, expect } from "./fixture";
 
 test1(
   "Verify contacts page title and description",
-  async ({ homePage, contactPage, page }) => {
+  async ({ homePage, contactPage }) => {
     await expect(contactPage.pageTitle).toHaveText("Contact List");
     await expect(contactPage.pageDescription).toHaveText(
       "Click on any contact to view the Contact Details"
@@ -12,7 +11,7 @@ test1(
   }
 );
 
-test1.only(
+test1(
   "Add contact and check successfully added",
   async ({ homePage, contactPage, page }) => {
     //Add a contact
