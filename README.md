@@ -1,7 +1,7 @@
 # Playwright Practice Project
 
-This project demonstrates some basic learning I have acquired in Playwright:
-
+This project demonstrates the basic learning I acquired while starting automation with Playwright:
+(More detailed project coming soon)
 ## Contact List Demo App tests
 
 The test web app I selected is
